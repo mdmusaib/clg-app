@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'LoginController@login');
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -43,6 +44,7 @@ Route::middleware('auth:student')->group(function () {
     Route::get('/staff',function (Request $request){
         return $request->user();  
     });
+    
     Route::get('staff/getAllStaff','StaffDetailController@index');
     Route::get('staff/show/{id}', 'StaffDetailController@show');
     Route::put('staff/update/{id}','StaffDetailController@update');
@@ -50,6 +52,7 @@ Route::middleware('auth:student')->group(function () {
 
 
 
+    
 
 Route::post('student/add', 'StudentDetailController@store');
 Route::post('staff/add', 'StaffDetailController@store');
